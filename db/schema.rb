@@ -11,7 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908213719) do
+ActiveRecord::Schema.define(version: 20150924232012) do
+
+  create_table "capabilities", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "capabilities_gadgets", force: :cascade do |t|
+    t.integer  "capability_id"
+    t.integer  "gadget_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "capabilities_gadgets", ["capability_id"], name: "index_capabilities_gadgets_on_capability_id"
+  add_index "capabilities_gadgets", ["gadget_id"], name: "index_capabilities_gadgets_on_gadget_id"
+
+  create_table "gadgets", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.float    "cost"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "superheros", force: :cascade do |t|
     t.string   "name"

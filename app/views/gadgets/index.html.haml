@@ -1,6 +1,14 @@
 %div
   Gadgets go here.
-%br
+%h1
+  Session
 - session.keys.each do |key|
   %div
     #{key}: #{session[key]}
+
+%h1
+  Cookie
+- cookies.each do |key, value|
+  %div
+    #{key}=>#{value}
+

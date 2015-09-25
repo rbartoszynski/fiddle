@@ -1,0 +1,23 @@
+=form_for :gadget, method: :post, url: "/gadgets" do |f|
+  =f.label :name
+  =f.text_field :name
+  =f.label :description
+  =f.text_field :description
+
+  -@capabilities.each.with_index do |c, index|
+    =f.fields_for "caps[#{index}]", c do |b|
+      =b.text_field :name
+
+  -#%input{name: "gadget[capabilities][0][name]" }
+  -#%input{name: "gadget[capabilities][0][description]" }
+  -#%input{name: "gadget[capabilities][1][name]" }
+  -#%input{name: "gadget[capabilities][2][description]" }
+
+  =f.submit "Submit"
+  -#  %input{name: "widgets[][foo]" }
+  -#  %input{name: "widgets[][bar]" }
+  -#  %input{name: "widgets[][foo]" }
+  -#  %input{name: "widgets[][fuzz]" }
+  -#  %input{name: "widgets[][bar]" }
+
+
